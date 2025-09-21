@@ -22,7 +22,7 @@ print(intervinientes_unicos)""",
             "why": "Los diccionarios son la forma más natural de representar objetos o registros del mundo real que tienen propiedades con nombre. Son increíblemente legibles y eficientes para buscar datos por su clave.",
             "appData": "El formato JSON, que domina el intercambio de datos en la web, es una representación directa de los diccionarios de Python. Se usan para todo, desde configuraciones hasta resultados de APIs.",
             "appLaw": "Un diccionario es la estructura de datos perfecta para modelar un acta, una ficha de cliente o un expediente. La 'clave' (ej. 'demandante') es el campo, y el 'valor' (ej. 'Ana García') es el dato, eliminando la ambigüedad de tener datos sueltos.",
-             "state": {"globals": {"expediente": "{'numero': 'PO-105/2024', 'demandante': 'Ana García', ...}"}}
+            "state": {"globals": {"expediente": {"numero": "PO-105/2024", "demandante": "Ana García", "demandado": "Global Tech S.L.", "cuantia": 25000.00}}}
         },
         {
             "highlight": {"line": 10},
@@ -30,7 +30,7 @@ print(intervinientes_unicos)""",
             "why": "En el mundo real, los datos a menudo son redundantes. Una misma persona o empresa puede aparecer en múltiples contextos. El primer paso para consolidar información es tener los datos brutos.",
             "appData": "Es común tener múltiples fuentes de datos (ej. logs de ventas, registros de clientes) con información repetida que necesita ser consolidada.",
             "appLaw": "En un litigio complejo, una misma parte (ej. 'Ana García') puede figurar en varios escritos o expedientes. El objetivo es obtener una lista consolidada y única de todos los intervinientes.",
-            "state": {"globals": {"partes_caso_A": "['Ana García', ...]", "partes_caso_B": "['Global Tech S.L.', ...]"}}
+            "state": {"globals": {"partes_caso_A": ["Ana García", "Global Tech S.L.", "Perito Juan Pérez"], "partes_caso_B": ["Global Tech S.L.", "Consultoría Digital", "Ana García"]}}
         },
         {
             "highlight": {"line": 13},
@@ -38,7 +38,7 @@ print(intervinientes_unicos)""",
             "why": "La característica principal de un 'conjunto' es que, por definición, no puede contener elementos duplicados. Al convertir una lista a conjunto, se eliminan automáticamente todas las repeticiones. La unión combina dos conjuntos en uno nuevo, manteniendo la unicidad.",
             "appData": "Es una operación fundamental para la limpieza de datos. Permite obtener los valores únicos de una columna, contar usuarios distintos o realizar operaciones de teoría de conjuntos (unión, intersección) entre diferentes segmentos de datos.",
             "appLaw": "Esta es una forma programática y a prueba de errores de determinar el conjunto total de partes personadas en un procedimiento. El resultado, `intervinientes_unicos`, es una lista depurada y sin duplicados, lista para ser utilizada en notificaciones o escritos.",
-            "state": {"globals": {"intervinientes_unicos": "{'Ana García', 'Global Tech S.L.', 'Perito Juan Pérez', 'Consultoría Digital'}"}}
+            "state": {"globals": {"intervinientes_unicos": {"Ana García", "Global Tech S.L.", "Perito Juan Pérez", "Consultoría Digital"}}}
         },
         {
             "highlight": {"line": 14},
