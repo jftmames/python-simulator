@@ -37,7 +37,14 @@ print(acta)""",
             "why": "Una vez importado, podemos usar las herramientas del módulo como si fueran nuestras. Esto nos da acceso a funcionalidades muy potentes (como el manejo preciso de fechas y zonas horarias) con muy poco esfuerzo.",
             "appData": "El manejo de series temporales es una disciplina en sí misma. El módulo 'datetime' es la puerta de entrada para analizar datos a lo largo del tiempo.",
             "appLaw": "El sellado de tiempo ('timestamping') es crucial para la validez de una prueba digital. Demuestra cuándo se realizó una acción (ej. la creación del acta). Usar un módulo estándar para esto garantiza la precisión y fiabilidad de la fecha.",
-            "state": {"globals": {"timestamp_actual": "2025-09-22T01:34:00.123456"}}
+            "state": {
+                "globals": {
+                    "json": "<module>", 
+                    "datetime": "<module>", 
+                    "generar_acta_de_evidencia": "<function>",
+                    "timestamp_actual": "2025-09-22T01:41:00.123456"
+                }
+            }
         },
         {
             "highlight": {"line": 10},
@@ -45,7 +52,16 @@ print(acta)""",
             "why": "Este es el resultado final de una buena organización. El archivo principal (`app.py`) se vuelve muy legible. Su trabajo es orquestar y llamar a las herramientas especializadas que ha importado de otros módulos.",
             "appData": "El script principal de un pipeline de datos se dedica a llamar a las funciones de los diferentes módulos en el orden correcto: `cargar()`, `limpiar()`, `analizar()`, `visualizar()`.",
             "appLaw": "Demuestra una estructura de trabajo profesional y escalable. Un perito puede desarrollar una biblioteca de 'protocolos' en sus propios módulos y luego importarlos en cada caso concreto según las necesidades, asegurando consistencia y eficiencia.",
-            "state": {"globals": {"acta": '{"documento": "Contrato_v2.pdf", "sha256": "...", "timestamp": "..."}'}, "io": {"out": ['{"documento": "Contrato_v2.pdf", "sha256": "...", "timestamp": "..."}']}}
+            "state": {
+                "globals": {
+                    "json": "<module>", 
+                    "datetime": "<module>", 
+                    "generar_acta_de_evidencia": "<function>",
+                    "timestamp_actual": "2025-09-22T01:41:00.123456",
+                    "acta": '{"documento": "Contrato_v2.pdf", "sha256": "...", "timestamp": "..."}'
+                }, 
+                "io": {"out": ['{"documento": "Contrato_v2.pdf", "sha256": "...", "timestamp": "..."}']}
+            }
         }
     ]
 }
