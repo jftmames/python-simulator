@@ -1,30 +1,25 @@
 import streamlit as st
 
 # --- Importar TODAS las Lecciones Creadas ---
-# Bloque I
+# (Asegúrate de que todos los archivos .py de lecciones existen en la carpeta 'lessons')
 from lessons.lesson_basics import lesson as lesson_01
 from lessons.lesson_data_types import lesson as lesson_02
 from lessons.lesson_03_lists_tuples import lesson as lesson_03
 from lessons.lesson_04_dicts_sets import lesson as lesson_04
 from lessons.lesson_05_conditionals import lesson as lesson_05
 from lessons.lesson_06_loops import lesson as lesson_06
-# Bloque II
 from lessons.lesson_07_functions import lesson as lesson_07
 from lessons.lesson_08_modules import lesson as lesson_08
 from lessons.lesson_09_exceptions import lesson as lesson_09
-# Bloque III
 from lessons.lesson_10_oop_intro import lesson as lesson_10
 from lessons.lesson_11_oop_inheritance import lesson as lesson_11
-# Bloque IV
 from lessons.lesson_12_list_comprehensions import lesson as lesson_12
 from lessons.lesson_13_regex import lesson as lesson_13
 from lessons.lesson_14_lambdas import lesson as lesson_14
-# Bloque V
 from lessons.lesson_15_environments import lesson as lesson_15
 from lessons.lesson_16_pip import lesson as lesson_16
 from lessons.lesson_17_testing import lesson as lesson_17
 from lessons.lesson_18_static_typing import lesson as lesson_18
-
 
 # --- Configuración de la Página ---
 st.set_page_config(layout="wide", page_title="Simulador Pythonless")
@@ -32,30 +27,40 @@ st.set_page_config(layout="wide", page_title="Simulador Pythonless")
 # --- Funciones para "Renderizar" Componentes ---
 
 def render_code_view(code, active_line):
-    lines = code.split('\\n')
+    lines = code.split('\n')
     formatted_code = ""
     for i, line in enumerate(lines, 1):
         if i == active_line:
-            formatted_code += f"{i:02d} > {line.strip()}\\n"
+            formatted_code += f"{i:02d} > {line.strip()}\n"
         else:
-            formatted_code += f"{i:02d}   {line.strip()}\\n"
+            formatted_code += f"{i:02d}   {line.strip()}\n"
     st.code(formatted_code, language="python")
 
+# --- FUNCIÓN CORREGIDA ---
 def render_state_view(state):
+    # Si el paso no tiene estado, no dibujamos nada.
     if not state:
         return
+
     globals_state = state.get("globals", {})
     io_state = state.get("io", {})
     col1, col2, col3 = st.columns(3)
+    
     with col1:
         st.subheader("Variables")
-        st.json(globals_state) if globals_state else st.write("—")
+        if globals_state:
+            st.json(globals_state) # Llama a st.json() directamente, sin print()
+        else:
+            st.write("—")
     with col2:
         st.subheader("Pila de llamadas")
         st.write("—") # Simplificado por ahora
     with col3:
         st.subheader("IO / Logs")
-        st.json(io_state) if io_state else st.write("—")
+        if io_state:
+            st.json(io_state) # Llama a st.json() directamente, sin print()
+        else:
+            st.write("—")
 
 def render_explain_cards(step):
     col1, col2, col3, col4 = st.columns(4)
@@ -105,7 +110,6 @@ if session_key not in st.session_state:
     st.session_state[session_key] = 0
 
 step_idx = st.session_state[session_key]
-# Asegurarnos de que el índice no se salga de rango si una lección tiene menos pasos
 if step_idx >= len(lesson["steps"]):
     st.session_state[session_key] = 0
     step_idx = 0
