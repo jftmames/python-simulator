@@ -47,6 +47,7 @@ lesson = {
             "why": "Es el acto de 'cerrar' el expediente. Al salir del entorno, volvemos a tener acceso a las herramientas del sistema principal, dejando la 'burbuja' del proyecto intacta y lista para ser reactivada cuando volvamos a trabajar en él.",
             "appData": "Permite cambiar de un proyecto a otro de forma limpia y segura. `deactivate`, `cd ../otro_proyecto`, `source venv_otro_proyecto/bin/activate`.",
             "appLaw": "Asegura que el trabajo realizado en un caso no 'contamina' inadvertidamente el siguiente. Es una medida de higiene y organización profesional indispensable para garantizar la integridad y reproducibilidad de la prueba pericial digital.",
-            "state": {"io": {"log": ["Entorno desactivado."]}}}
+            "state": {"io": {"log": ["Entorno desactivado."]}}
+        }
     ]
 }
