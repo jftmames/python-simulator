@@ -21,27 +21,24 @@ from lessons.lesson_16_pip import lesson as lesson_16
 from lessons.lesson_17_testing import lesson as lesson_17
 from lessons.lesson_18_static_typing import lesson as lesson_18
 
-# --- Configuración de la Página ---
-st.set_page_config(layout="wide", page_title="Simulador Pythonless")
+# --- Configuración de la Página (TÍTULO DE LA PESTAÑA ACTUALIZADO) ---
+st.set_page_config(layout="wide", page_title="Python 101 para Abogados")
 
 # --- Funciones para "Renderizar" Componentes ---
 
 def render_code_view(code, active_line):
-    lines = code.split('\n')
+    lines = code.split('\\n')
     formatted_code = ""
     for i, line in enumerate(lines, 1):
         if i == active_line:
-            formatted_code += f"{i:02d} > {line.strip()}\n"
+            formatted_code += f"{i:02d} > {line.strip()}\\n"
         else:
-            formatted_code += f"{i:02d}   {line.strip()}\n"
+            formatted_code += f"{i:02d}   {line.strip()}\\n"
     st.code(formatted_code, language="python")
 
-# --- FUNCIÓN CORREGIDA ---
 def render_state_view(state):
-    # Si el paso no tiene estado, no dibujamos nada.
     if not state:
         return
-
     globals_state = state.get("globals", {})
     io_state = state.get("io", {})
     col1, col2, col3 = st.columns(3)
@@ -49,16 +46,16 @@ def render_state_view(state):
     with col1:
         st.subheader("Variables")
         if globals_state:
-            st.json(globals_state) # Llama a st.json() directamente, sin print()
+            st.json(globals_state)
         else:
             st.write("—")
     with col2:
         st.subheader("Pila de llamadas")
-        st.write("—") # Simplificado por ahora
+        st.write("—")
     with col3:
         st.subheader("IO / Logs")
         if io_state:
-            st.json(io_state) # Llama a st.json() directamente, sin print()
+            st.json(io_state)
         else:
             st.write("—")
 
@@ -73,9 +70,9 @@ def render_explain_cards(step):
     with col4:
         st.error(f"**Aplicación en Derecho:** {step['appLaw']}")
 
-# --- Aplicación Principal ---
+# --- Aplicación Principal (TÍTULO PRINCIPAL ACTUALIZADO) ---
 
-st.title("Simulador Pythonless")
+st.title("Python 101 para Abogados")
 st.markdown("Una herramienta para entender la lógica de Python, aplicada al Derecho y Blockchain, **sin ejecutar código real**.")
 
 # Diccionario con TODAS las lecciones
